@@ -1,11 +1,13 @@
 import Layout from "@/components/template/layout";
+import { useAppData } from "@/data/hook/userAppData";
 
-export default function Home() {
+export default function PerfilUsuario() {
+  const { tema } = useAppData();
   return (
     <div className="flex w-screen h-screen bg-white">
       <Layout
-        titulo="Pagina inicial"
-        subtitulo="Estamos construindo um template ADM!!"
+        titulo="Pagina Perfil do usuário"
+        subtitulo="Gerenciar aqui suas informações"
       >
         <h3>Conteudo</h3>
       </Layout>

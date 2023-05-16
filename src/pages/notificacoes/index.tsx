@@ -1,13 +1,15 @@
 import Layout from "@/components/template/layout";
+import { useAppData } from "@/data/hook/userAppData";
 
-export default function Home() {
+export default function Notificacoes() {
+  const { tema } = useAppData();
   return (
     <div className="flex w-screen h-screen bg-white">
       <Layout
-        titulo="Pagina inicial"
-        subtitulo="Estamos construindo um template ADM!!"
+        titulo="Pagina Notificações"
+        subtitulo="Gerenciar as notificações aqui"
       >
-        <h3>Conteudo</h3>
+        <h3>{tema}</h3>
       </Layout>
     </div>
   );
