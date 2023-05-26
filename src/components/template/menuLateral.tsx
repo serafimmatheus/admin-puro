@@ -1,4 +1,10 @@
-import { IconeAjustes, IconeCasa, IconeSair, IconeSino } from "../icons";
+import {
+  BoxProduto,
+  IconeAjustes,
+  IconeCasa,
+  IconeSair,
+  IconeSino,
+} from "../icons";
 import logoPrincipal from "../../assets/logo/logoPrincipal.png";
 import MenuItem from "./MenuItem";
 import Image from "next/image";
@@ -30,6 +36,7 @@ export default function MenuLaretal() {
       </div>
       <ul className={`flex-grow`}>
         <MenuItem url="/" texto="Início" icone={IconeCasa} />
+        <MenuItem url="/produtos" texto="Produtos" icone={BoxProduto} />
         <MenuItem url="/ajustes" texto="Ajustes" icone={IconeAjustes} />
         <MenuItem url="/notificacoes" texto="Notificações" icone={IconeSino} />
       </ul>
