@@ -1,5 +1,6 @@
 import { apiLI } from "@/API-LI/api-lojaIntegrada";
 import { createContext, useContext, useState } from "react";
+import { useAppAuth } from "../hook/useAuth";
 
 interface ProductsContextIProps {
   allProducts: (limit: any, offset: any) => Promise<void>;
@@ -26,6 +27,7 @@ export const ProductsContext = createContext<ProductsContextIProps>(
 // ?limit=20&offset=40
 
 export const ProductProvider = ({ children }: ProductProviderIProps) => {
+  const { usuario } = useAppAuth();
   const [ListaTodosProdutos, setListaTodosProdutos] = useState([]);
   const [produto, setProduto] = useState({});
   const [isLoadingProduct, setIsLoadingProduct] = useState(false);
@@ -35,8 +37,7 @@ export const ProductProvider = ({ children }: ProductProviderIProps) => {
     apiLI
       .get(`/produto?limit=${limit}&offset=${offset}`, {
         headers: {
-          Authorization:
-            "chave_api 6785a9822e6cddec507c aplicacao 9f3a4773-211d-45e2-8a6a-3daf33894f2c",
+          Authorization: `chave_api ${usuario.chaveApi} aplicacao ${process.env.CHAVE_APP}`,
         },
       })
       .then((response) => {
@@ -54,8 +55,7 @@ export const ProductProvider = ({ children }: ProductProviderIProps) => {
     apiLI
       .get(`/produto/${id}`, {
         headers: {
-          Authorization:
-            "chave_api 6785a9822e6cddec507c aplicacao 9f3a4773-211d-45e2-8a6a-3daf33894f2c",
+          Authorization: `chave_api ${usuario.chaveApi} aplicacao ${process.env.CHAVE_APP}`,
         },
       })
       .then((response) => {
