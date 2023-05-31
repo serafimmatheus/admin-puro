@@ -5,15 +5,24 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
+interface ProdutosIProps {
+  id: number;
+  nome: string;
+}
+
 export default function PageProdutos() {
   const { produtoPorId, produto, ListaTodosProdutos, isLoadingProduct } =
     useProducts();
 
   const route = useRouter();
-  const { id } = route.query;
+  const { id } = route.query as { id?: number };
+
+  const produtos: any = produto;
 
   useEffect(() => {
-    produtoPorId(parseInt(id));
+    if (id) {
+      produtoPorId(id);
+    }
   }, []);
 
   return (
@@ -40,8 +49,8 @@ export default function PageProdutos() {
               </div>
 
               <div>
-                <Link href={`/produtos/${produto.id}`}>
-                  <span>{produto.nome} </span>
+                <Link href={`/produtos/${produtos.id}`}>
+                  <span>{produtos.nome} </span>
                 </Link>
               </div>
             </div>
@@ -50,12 +59,12 @@ export default function PageProdutos() {
               <div className="w-full object-cover flex">
                 <img
                   className="w-full"
-                  src={`https://cdn.awsli.com.br/${produto?.imagem_principal?.caminho}`}
+                  src={`https://cdn.awsli.com.br/${produtos?.imagem_principal?.caminho}`}
                   alt="teste"
                 />
               </div>
 
-              <p>{produto.nome}</p>
+              <p>{produtos.nome}</p>
             </div>
           </>
         )}

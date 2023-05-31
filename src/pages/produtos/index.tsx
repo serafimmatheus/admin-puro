@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function PageProdutos() {
   const { allProducts, ListaTodosProdutos, isLoadingProduct } = useProducts();
   //   const [imagens, setImagens] = useState([]);
-
+  const ListaProdutos: any = ListaTodosProdutos;
   useEffect(() => {
     allProducts(20, 0);
   }, []);
@@ -34,7 +34,7 @@ export default function PageProdutos() {
         ) : (
           <div className="w-full h-full">
             <ul className=" w-full h-full flex flex-wrap gap-4">
-              {ListaTodosProdutos.map((produto) =>
+              {ListaProdutos.map((produto: any) =>
                 produto.filho || !produto.nome || !produto.apelido ? (
                   ""
                 ) : (
