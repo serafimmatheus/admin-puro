@@ -37,7 +37,7 @@ export const ProductProvider = ({ children }: ProductProviderIProps) => {
     apiLI
       .get(`/produto?limit=${limit}&offset=${offset}`, {
         headers: {
-          Authorization: `chave_api ${usuario.chaveApi} aplicacao ${process.env.CHAVE_APP}`,
+          Authorization: `chave_api ${usuario.chaveApi} aplicacao 9f3a4773-211d-45e2-8a6a-3daf33894f2c`,
         },
       })
       .then((response) => {
@@ -55,7 +55,7 @@ export const ProductProvider = ({ children }: ProductProviderIProps) => {
     apiLI
       .get(`/produto/${id}`, {
         headers: {
-          Authorization: `chave_api ${usuario.chaveApi} aplicacao ${process.env.CHAVE_APP}`,
+          Authorization: `chave_api ${usuario.chaveApi} aplicacao 9f3a4773-211d-45e2-8a6a-3daf33894f2c`,
         },
       })
       .then((response) => {
